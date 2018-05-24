@@ -30,5 +30,6 @@ For Example:
 
 ### Super Mega Bonus Credit Hyper fighting
 
-* Allow users bto edit the namesin the list after they are added.
-(Wouldn't it be nice if we could make that span's ***content editable***)
+* Allow users to edit the namesin the list after they are added.
+
+Wouldn't it be nice if we could make that span's ***content editable***?

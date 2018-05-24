@@ -17,3 +17,7 @@ body {
     background-size: cover;
     background-blend-mode: lighten;
 }
+
+.flickName {
+    margin: 0 0.75rem;
+}

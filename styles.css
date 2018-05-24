@@ -1,8 +1,19 @@
-. {
+* {
     border: 1px solid green;
 }
 
-main {
+header {
+    color: white;
+    //margin: .5rem auto;
+    display: block;
+}
+
+body {
     width: 80%;
     margin: 1rem auto;
+    background-image: url('./assets/images/january.jpg');
+    background-repeat: no-repeat, repeat;
+    background-color: #cccccc;
+    background-size: cover;
+    background-blend-mode: lighten;
 }

@@ -20,6 +20,11 @@ const app = {
         item
             .querySelector('.flickName')
             .textContent = flick.name
+
+        item
+            .querySelector('.del.button')
+            .addEventListener('click', this.handleDeleteFlick)
+        
         return item
     },
 
@@ -39,6 +44,14 @@ const app = {
 
         console.log(flick)
         form.reset()
+    },
+
+    handleDeleteFlick(ev) {
+        const item = ev.target.closest('.flick')
+        item.remove()
+
+        
+        console.log('Delete Flick')
     },
 }
 

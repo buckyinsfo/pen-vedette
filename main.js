@@ -17,9 +17,10 @@ class App {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
         item.dataset.id = flick.id
-        item
-            .querySelector('.flickName')
-            .textContent = flick.name
+        
+        const nameSpan = item.querySelector('.flickName')
+        nameSpan.textContent = flick.name
+        nameSpan.addEventListener('keypress', this.handleSaveOnEnter.bind(this, flick))
 
         item
             .querySelector('.del.button')
@@ -32,7 +33,6 @@ class App {
         item
             .querySelector('.edit.button')
             .addEventListener('click', this.handleEditFlick.bind(this, flick))
-
 
         return item
     }
@@ -56,6 +56,12 @@ class App {
         form.reset()
     }
 
+    handleSaveOnEnter(flick, ev) {
+        if(ev.key === 'Enter') {
+            this.handleEditFlick(flick, ev)
+        }
+    }
+
     handleDeleteFlick(flick, ev) {
         // Remove item from the DOM
         const item = ev.target.closest('.flick')
@@ -76,8 +82,8 @@ class App {
     }
 
     handleEditFlick(flick, ev) {
-        const btn = ev.target
-        const item = btn.closest('.flick')
+        const item = ev.target.closest('.flick')
+        const btn = item.querySelector('.edit.button')
         const nameField = item.querySelector('.flickName')
 
         if (nameField.isContentEditable) {

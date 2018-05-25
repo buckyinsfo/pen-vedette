@@ -1,4 +1,4 @@
-const app = {
+class App {
 
     init(selectors) {
         this.flicks = []
@@ -11,7 +11,7 @@ const app = {
             .addEventListener('submit', ev => {
                 this.handleSubmit(ev)
             })
-    },
+    }
 
     renderListItem(flick) {
         const item = this.template.cloneNode(true)
@@ -26,7 +26,7 @@ const app = {
             .addEventListener('click', this.handleDeleteFlick.bind(this, flick))
         
         return item
-    },
+    }
 
     handleSubmit(ev) {
         ev.preventDefault()
@@ -44,7 +44,7 @@ const app = {
 
         console.log(flick)
         form.reset()
-    },
+    }
 
     handleDeleteFlick(flick, ev) {
         // Remove item from the DOM
@@ -56,9 +56,10 @@ const app = {
         this.flicks.splice(i, 1)
         
         console.log('Delete Flick')
-    },
+    }
 }
 
+const app = new App
 app.init({
     flickForm: '#flickForm',
     listSelector: '#flickList',

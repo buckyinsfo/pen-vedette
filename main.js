@@ -23,7 +23,7 @@ const app = {
 
         item
             .querySelector('.del.button')
-            .addEventListener('click', this.handleDeleteFlick)
+            .addEventListener('click', this.handleDeleteFlick.bind(this, flick))
         
         return item
     },
@@ -46,10 +46,14 @@ const app = {
         form.reset()
     },
 
-    handleDeleteFlick(ev) {
+    handleDeleteFlick(flick, ev) {
+        // Remove item from the DOM
         const item = ev.target.closest('.flick')
         item.remove()
 
+        // Remove item from the Array
+        const i = this.flicks.indexOf(flick)
+        this.flicks.splice(i, 1)
         
         console.log('Delete Flick')
     },

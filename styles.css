@@ -25,3 +25,7 @@ body {
 .template {
     display: none;
 }
+
+.flick.favorite {
+    background-color: #62e6ff;
+}

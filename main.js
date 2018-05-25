@@ -24,7 +24,12 @@ class App {
         item
             .querySelector('.del.button')
             .addEventListener('click', this.handleDeleteFlick.bind(this, flick))
-        
+
+        item
+            .querySelector('.fav.button')
+            .addEventListener('click', this.handleFavFlick.bind(this, flick))
+
+
         return item
     }
 
@@ -35,6 +40,7 @@ class App {
         const flick = {
             id: ++this.max,
             name: form.flickName.value,
+            fav: false,
         }
 
         this.flicks.unshift(flick)
@@ -54,12 +60,19 @@ class App {
         // Remove item from the Array
         const i = this.flicks.indexOf(flick)
         this.flicks.splice(i, 1)
-        
+
         console.log('Delete Flick')
+    }
+
+    handleFavFlick(flick, ev) {
+        const item = ev.target.closest('.flick')
+        flick.fav = item.classList.toggle('favorite')
+        
+        console.log("Fav Flick")
     }
 }
 
-const app = new App
+const app = new App()
 app.init({
     flickForm: '#flickForm',
     listSelector: '#flickList',

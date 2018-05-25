@@ -29,6 +29,10 @@ class App {
             .querySelector('.fav.button')
             .addEventListener('click', this.handleFavFlick.bind(this, flick))
 
+        item
+            .querySelector('.edit.button')
+            .addEventListener('click', this.handleEditFlick.bind(this, flick))
+
 
         return item
     }
@@ -69,6 +73,29 @@ class App {
         flick.fav = item.classList.toggle('favorite')
         
         console.log("Fav Flick")
+    }
+
+    handleEditFlick(flick, ev) {
+        const btn = ev.target
+        const item = btn.closest('.flick')
+        const nameField = item.querySelector('.flickName')
+
+        if (nameField.isContentEditable) {
+            nameField.contentEditable = false
+            btn.textContent = 'edit'
+            btn.classList.remove('success')
+
+            // Save the content
+            flick.name = nameField.textContent
+
+        } else {
+            nameField.contentEditable = true
+            nameField.focus()
+            btn.textContent = 'save'
+            btn.classList.add('success')
+        }
+        
+
     }
 }
 
